@@ -1,9 +1,17 @@
-import React from 'react'
+import { getMonthDays } from "@/lib/date";
+import CalendarGrid from "./CalendarGrid";
 
-const Calendar = () => {
+export default function Calendar() {
+  const now = new Date();
+  const days = getMonthDays(now.getFullYear(), now.getMonth());
+
   return (
-    <div>Calendar</div>
-  )
-}
+    <section className="p-4">
+      <h1 className="text-xl font-semibold mb-4">
+        {now.toLocaleString("default", { month: "long", year: "numeric" })}
+      </h1>
 
-export default Calendar
+      <CalendarGrid days={days} />
+    </section>
+  );
+}

@@ -1,9 +1,26 @@
-import React from 'react'
+import DayCell from "./DayCell";
+import { activities } from "@/lib/mockData";
+import { formatDateKey } from "@/lib/date";
 
-const CalendarGrid = () => {
-  return (
-    <div>CalendarGrid</div>
-  )
+interface Props {
+  days: Date[];
 }
 
-export default CalendarGrid
+export default function CalendarGrid({ days }: Props) {
+  return (
+    <div className="grid grid-cols-7 gap-2">
+      {days.map(date => {
+        const key = formatDateKey(date);
+        const dayActivities = activities.filter(a => a.date === key);
+
+        return (
+          <DayCell
+            key={key}
+            day={date.getDate()}
+            activities={dayActivities}
+          />
+        );
+      })}
+    </div>
+  );
+}
