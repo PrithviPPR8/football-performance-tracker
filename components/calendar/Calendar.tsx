@@ -7,7 +7,7 @@ export default function Calendar() {
 
   return (
     <section className="p-4">
-      <h1 className="text-xl font-semibold mb-4">
+      <h1 className="text-3xl text-black font-bold text-center mb-6 tracking-wide">
         {now.toLocaleString("default", { month: "long", year: "numeric" })}
       </h1>
 
